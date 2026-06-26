@@ -15,11 +15,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to K3s') {
-            steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
-            }
-        }
+       stage('Deploy to K3s') {
+    steps {
+        sh 'sudo k3s kubectl apply -f deployment.yaml'
+        sh 'sudo k3s kubectl get pods'
     }
 }
+        }
+    }
+
