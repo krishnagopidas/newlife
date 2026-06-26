@@ -17,8 +17,8 @@ pipeline {
 
        stage('Deploy to K3s') {
     steps {
-        sh 'sudo k3s kubectl apply -f deployment.yaml'
-        sh 'sudo k3s kubectl get pods'
+        sh 'kubectl apply -f deployment.yaml'
+        sh 'kubectl get pods'
     }
 }
         }
