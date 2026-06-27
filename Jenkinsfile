@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "gopikrishnadockerpractie/employee-management:latest"
     }
+stages{
 stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(
@@ -16,7 +17,7 @@ stage('Docker Push') {
                 }
             }
         }
-    stages {
+    
 
         stage('Build') {
             steps {
