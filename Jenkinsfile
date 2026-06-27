@@ -1,6 +1,21 @@
 pipeline {
     agent any
-
+     
+    environment {
+        DOCKER_IMAGE = "gopikrishnadockerpractie/employee-management:latest"
+    }
+stage('Docker Push') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'gopikrishnadockerpractie',
+                    passwordVariable: 'Gopikrishna'
+                )]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh 'docker push $DOCKER_IMAGE'
+                }
+            }
+        }
     stages {
 
         stage('Build') {
